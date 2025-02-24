@@ -509,7 +509,7 @@ resource "azurerm_network_interface" "vm" {
   name                          = replace(replace(var.name_template_network_interface, "$${vm_hostname}", var.vm_hostname), "$${host_number}", count.index)
   resource_group_name           = var.resource_group_name
   accelerated_networking_enabled = var.enable_accelerated_networking
-  enable_ip_forwarding          = var.enable_ip_forwarding
+  ip_forwarding_enabled         = var.enable_ip_forwarding
   tags = merge(var.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_git_commit           = "78b54d36f6674612398cab6b85f1a149543d5ade"
     avm_git_file             = "main.tf"
